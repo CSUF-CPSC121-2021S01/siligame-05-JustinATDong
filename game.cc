@@ -13,6 +13,14 @@ void Game::CreateOpponents() {
   }
 }
 
+int Game::GetScore() {
+  return game_score;
+}
+
+bool Game::HasLost() {
+  return YouLost;
+}
+
 void Game::UpdateScreen() {
   board_.DrawRectangle(0, 0, 800, 600, 255, 255, 255);
   for (int i = 0; i < UFO_.size(); i++) {
@@ -89,7 +97,13 @@ void Game::OnAnimationStep() {
 
 void Game::LaunchProjectiles() {
   for (int i = 0; i < UFO_.size(); i++) {
-    std::unique_ptr<OpponentProjectile> Cannon = UFO_[i]->LaunchProjectile();
+    if (UFO_[i]->LaunchProjectile() != nullptr) {
+      std::unique_ptr<OpponentProjectile> Cannon;
+      Cannon = std::make_unique<OpponentProjectile>();
+      Cannon->SetX(UFO_[i]->GetX());
+      Cannon->SetY(UFO_[i]->GetY());
+      Beam_.push_back(std::move(Cannon));
+    }
   }
 }
 

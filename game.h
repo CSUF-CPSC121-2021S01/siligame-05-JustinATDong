@@ -26,6 +26,9 @@ class Game : public graphics::AnimationEventListener,
   void OnMouseEvent(const graphics::MouseEvent &mouseObject);
   void LaunchProjectiles();
   void RemoveInactive();
+  int GetScore();
+  bool HasLost();
+
 
  private:
   graphics::Image board_;
@@ -34,6 +37,6 @@ class Game : public graphics::AnimationEventListener,
   std::vector<std::unique_ptr<Opponent>> UFO_;
   Player Plane_;
   int game_score = 0;
-  bool HasLost;
+  bool YouLost;
 };
 #endif
