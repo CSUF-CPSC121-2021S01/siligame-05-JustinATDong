@@ -22,11 +22,11 @@ void Opponent::Move(const graphics::Image &image) {
 }
 
 std::unique_ptr<OpponentProjectile> Opponent::LaunchProjectile() {
-  if (beam_firing_rate >=10) {
+  if (beam_firing_rate >= 10) {
     beam_firing_rate = 0;
     std::unique_ptr<OpponentProjectile> BeamofLight;
     BeamofLight = std::make_unique<OpponentProjectile>();
-      return std::move(BeamofLight);
+    return std::move(BeamofLight);
   } else {
     beam_firing_rate++;
     return nullptr;

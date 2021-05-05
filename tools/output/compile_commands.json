@@ -1,0 +1,27 @@
+[
+ {
+ "directory" : "/home/student/siligame-05-JustinATDong",
+ "command" : "clang++ -std=c++17 main.cc -o main",
+ "file" : "/home/student/siligame-05-JustinATDong/main.cc"
+ },
+ {
+ "directory" : "/home/student/siligame-05-JustinATDong",
+ "command" : "clang++ -std=c++17 player.cc -o main",
+ "file" : "/home/student/siligame-05-JustinATDong/player.cc"
+ },
+ {
+ "directory" : "/home/student/siligame-05-JustinATDong",
+ "command" : "clang++ -std=c++17 opponent.cc -o main",
+ "file" : "/home/student/siligame-05-JustinATDong/opponent.cc"
+ },
+ {
+ "directory" : "/home/student/siligame-05-JustinATDong",
+ "command" : "clang++ -std=c++17 game_element.cc -o main",
+ "file" : "/home/student/siligame-05-JustinATDong/game_element.cc"
+ },
+ {
+ "directory" : "/home/student/siligame-05-JustinATDong",
+ "command" : "clang++ -std=c++17 game.cc -o main",
+ "file" : "/home/student/siligame-05-JustinATDong/game.cc"
+ },
+]

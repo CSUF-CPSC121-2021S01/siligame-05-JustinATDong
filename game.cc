@@ -13,13 +13,9 @@ void Game::CreateOpponents() {
   }
 }
 
-int Game::GetScore() {
-  return game_score;
-}
+int Game::GetScore() { return game_score; }
 
-bool Game::HasLost() {
-  return YouLost;
-}
+bool Game::HasLost() { return YouLost; }
 
 void Game::UpdateScreen() {
   board_.DrawRectangle(0, 0, 800, 600, 255, 255, 255);
@@ -60,16 +56,18 @@ void Game::MoveGameElements() {
 void Game::FilterIntersections() {
   // plane and UFO
   for (int j = 0; j < UFO_.size(); j++) {
-    if (Plane_.IntersectsWith(UFO_[j].get())) {
+    if (Plane_.IntersectsWith(UFO_[j].get()) == true) {
       Plane_.SetIsActive(false);
       UFO_[j]->SetIsActive(false);
+      YouLost = true;
     }
   }
   // Beam and Plane
   for (int i = 0; i < Beam_.size(); i++) {
-    if (Beam_[i]->IntersectsWith(&Plane_)) {
+    if (Beam_[i]->IntersectsWith(&Plane_) == true) {
       Plane_.SetIsActive(false);
       Beam_[i]->SetIsActive(false);
+      YouLost = true;
     }
   }
   // Bullet and UFO
@@ -78,7 +76,9 @@ void Game::FilterIntersections() {
       if (Bullet_[p]->IntersectsWith(UFO_[k].get()) == true) {
         Bullet_[p]->SetIsActive(false);
         UFO_[k]->SetIsActive(false);
-        game_score++;
+        if (Plane_.GetIsActive() == true) {
+          game_score++;
+        }
       }
     }
   }
@@ -127,12 +127,12 @@ void Game::OnMouseEvent(const graphics::MouseEvent &mouse) {
 
 void Game::RemoveInactive() {
   for (int i = Bullet_.size() - 1; i >= 0; i--) {
-    if (!Bullet_[i]->GetIsActive()) {
+    if (Bullet_[i]->GetIsActive() == false) {
       Bullet_.erase(Bullet_.begin() + i);
     }
   }
   for (int i = Beam_.size() - 1; i >= 0; i--) {
-    if (!Beam_[i]->GetIsActive()) {
+    if (Beam_[i]->GetIsActive() == false) {
       Beam_.erase(Beam_.begin() + i);
     }
   }

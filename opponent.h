@@ -1,4 +1,5 @@
 #include <memory>
+
 #include "game_element.h"
 
 #ifndef OPPONENT_H
@@ -10,7 +11,6 @@ class OpponentProjectile : public GameElement {
   OpponentProjectile() : GameElement(0, 0, 5, 5) {}
   void Draw(graphics::Image &board);
   void Move(const graphics::Image &image);
-
 };
 
 class Opponent : public GameElement {
@@ -20,9 +20,9 @@ class Opponent : public GameElement {
   void Draw(graphics::Image &board);
   void Move(const graphics::Image &image);
 
-    std::unique_ptr<OpponentProjectile> LaunchProjectile();
+  std::unique_ptr<OpponentProjectile> LaunchProjectile();
 
-private:
+ private:
   int beam_firing_rate = 0;
 };
 
